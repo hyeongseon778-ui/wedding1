@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>마법학교 웨딩홀 - 모바일 청첩장</title>
+<!-- 도트 감성 한글 폰트(Galmuri). 로딩 실패 시 Jua로 대체됩니다 -->
+<link href="https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app"><!-- 412px 고정 모바일 프레임 -->
+
+  <!-- ===== 1) 인트로 : 꽃장식 나무문 ===== -->
+  <section id="intro">
+    <img id="introBg" class="px" alt="">
+    <div class="sign gbox"><b>✦ WEDDING HALL ✦</b><br><span id="signNames"></span></div>
+    <div class="doorbox" id="doorbox">
+      <img class="px frame" id="frameImg" alt="">
+      <div class="doors"><img class="px door" id="dl" alt=""><img class="px door" id="dr" alt=""></div>
+      <svg id="magic" viewBox="-100 -100 200 200">
+        <g fill="none" stroke="#fff3a8" stroke-width="2">
+          <circle r="92"/><circle r="76" stroke-dasharray="5 5"/><circle r="40"/>
+          <polygon points="0,-76 65.8,38 -65.8,38"/><polygon points="0,76 65.8,-38 -65.8,-38"/>
+        </g>
+      </svg>
+      <img class="px fl fl-l" id="flL" alt=""><img class="px fl fl-r" id="flR" alt="">
+      <button id="enterBtn" class="gbtn big">입장하기</button>
+    </div>
+  </section>
+
+  <!-- ===== 2) 메인 : 웨딩홀 ===== -->
+  <section id="hall" hidden>
+    <div class="stage" id="stage">
+      <img id="map" class="px" alt="">
+      <div id="props"></div>
+      <div id="actors"></div>
+      <div class="light"></div>
+      <div id="sparks"></div>
+      <div id="hearts"></div>
+      <div class="hud gbox">
+        <div class="tbar">미니정보</div>
+        <div class="hbody"><b id="coupleNames"></b><br>하객 <span id="guestCount">0</span>명 입장 중</div>
+      </div>
+    </div>
+    <nav class="menubar gbox">
+      <button data-open="maker"><img class="px ic" data-ic="person" alt="">캐릭터<br>만들기</button>
+      <button data-open="album"><img class="px ic" data-ic="book" alt="">웨딩<br>앨범</button>
+      <button data-open="scroll"><img class="px ic" data-ic="scroll" alt="">오시는<br>길</button>
+    </nav>
+  </section>
+
+  <!-- ===== 3) 하객 캐릭터 만들기 ===== -->
+  <div class="modal" id="maker" hidden>
+    <div class="win gbox">
+      <div class="tbar">캐릭터 만들기<button class="x" data-close>✕</button></div>
+      <div class="wbody">
+        <div id="preview"></div>
+        <div class="seg" id="genderSeg"><button data-g="F" class="on">여성</button><button data-g="M">남성</button></div>
+        <div id="parts"></div>
+        <input id="gName" maxlength="8" placeholder="이름 (최대 8자)">
+        <div class="seg" id="sideSeg"><button data-s="신부측" class="on">신부측</button><button data-s="신랑측">신랑측</button></div>
+        <input id="gMsg" maxlength="30" placeholder="축하 메시지 (최대 30자)">
+        <button id="createBtn" class="gbtn">생성 완료!</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 4) 웨딩 앨범 (도감) ===== -->
+  <div class="modal" id="album" hidden>
+    <div class="win gbox">
+      <div class="tbar">웨딩 도감 <small id="albumNo"></small><button class="x" data-close>✕</button></div>
+      <div class="wbody">
+        <div class="viewer"><div id="track"></div></div>
+        <div class="nav"><button id="prevP" class="gbtn">◀</button><button id="nextP" class="gbtn">▶</button></div>
+        <div id="thumbs"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 5) 오시는 길 : 마법 두루마리 ===== -->
+  <div class="modal" id="scroll" hidden>
+    <div class="paper">
+      <span class="rod"></span>
+      <button class="x" data-close>✕</button>
+      <div class="paper-body" id="paperBody"></div>
+      <span class="rod"></span>
+    </div>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
